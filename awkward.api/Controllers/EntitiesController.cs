@@ -2,54 +2,71 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using awkward.api.Data;
 using awkward.api.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace awkward.api.Controllers
 {
     [Route("api/[controller]")]
     public class EntitiesController : Controller
     {
-        public EntitiesController(Repository repository)
+        public EntitiesController(EntityContext context)
         {
-            Repository = repository;
+            Context = context;
         }
 
-        private Repository Repository { get; set; }
+        private EntityContext Context { get; set; }
 
-        // GET api/entities
         [HttpGet]
-        public IEnumerable<Entity> Get()
+        public async Task<IActionResult> GetAsync()
         {
-            return Repository.Get();
+            var entities = await Context.Entities.ToListAsync();
+            return Ok(entities);
         }
 
-        // GET api/entities/5
         [HttpGet("{id}")]
-        public Entity Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            return Repository.Get(id);
+            var entity = await Context.Entities.FindAsync(id);
+            return Ok(entity);
         }
 
-        // POST api/entities
         [HttpPost]
-        public void Post([FromBody]Entity value)
+        public async Task<IActionResult> PostAsync([FromBody]Entity value)
         {
-            Repository.Add(value);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            await Context.Entities.AddAsync(value);
+            await Context.SaveChangesAsync();
+
+            return Ok();
         }
 
-        // PUT api/entities/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Entity value)
+        public async Task<IActionResult> PutAsync(int id, [FromBody]Entity value)
         {
-            Repository.Update(value);
+            var entity = await Context.Entities.FindAsync(id);
+            if (entity == null) return NotFound();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            Context.Entities.Update(value);
+            await Context.SaveChangesAsync();
+
+            return Ok();
         }
 
-        // DELETE api/entities/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            Repository.Remove(id);
+            var entity = await Context.Entities.FindAsync(id);
+            if (entity == null) return NotFound();
+
+            Context.Entities.Remove(entity);
+            await Context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

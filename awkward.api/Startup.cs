@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using awkward.api.Data;
 using awkward.api.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -25,9 +27,8 @@ namespace awkward.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<Repository>();
             services.AddMvc();
-
+            services.AddDbContext<EntityContext>(x => x.UseSqlite("Data Source=YourDbFileName.sqlite"));
             services.AddSwaggerGen(x => x.SwaggerDoc("v1", new Info { Title = "Enitity Comparitor", Version = "v1" }));
         }
 
@@ -40,6 +41,8 @@ namespace awkward.api
                 app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "Entity Comparitor"));
 
                 app.UseDeveloperExceptionPage();
+
+                EntityContext.Seed(app.ApplicationServices);
             }
 
             app.UseMvc();
