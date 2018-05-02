@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using awkward.ui.Data;
 using awkward.ui.Services;
+using System.Net.Http;
 
 namespace awkward.ui
 {
@@ -26,12 +26,14 @@ namespace awkward.ui
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            var httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(Configuration["serviceUrl"])
+            };
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            // API client configuration
+            services.AddSingleton(httpClient);
+            services.AddSingleton<IApiClient, ApiClient>();
 
             services.AddMvc()
                 .AddRazorPagesOptions(options =>
@@ -39,10 +41,6 @@ namespace awkward.ui
                     options.Conventions.AuthorizeFolder("/Account/Manage");
                     options.Conventions.AuthorizePage("/Account/Logout");
                 });
-
-            // Register no-op EmailSender used by account confirmation and password reset during development
-            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
-            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
