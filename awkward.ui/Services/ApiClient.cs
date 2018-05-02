@@ -48,5 +48,12 @@ namespace awkward.ui.Services
 
             response.EnsureSuccessStatusCode();
         }
+
+        public async Task RemoveTripAsync(int id)
+        {
+            var response = await _HttpClient.DeleteAsync($"/api/Entities/{id}");
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 }

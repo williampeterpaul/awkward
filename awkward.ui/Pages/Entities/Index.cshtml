@@ -14,22 +14,22 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Entity[0].Name)
+                    @Html.DisplayNameFor(model => model.Entities[0].Name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Entity[0].Description)
+                    @Html.DisplayNameFor(model => model.Entities[0].Description)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Entity[0].Content)
+                    @Html.DisplayNameFor(model => model.Entities[0].Content)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Entity[0].CreationDate)
+                    @Html.DisplayNameFor(model => model.Entities[0].CreationDate)
                 </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Entity) {
+@foreach (var item in Model.Entities) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

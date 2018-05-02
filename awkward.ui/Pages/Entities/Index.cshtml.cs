@@ -6,24 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using awkward.api.Models;
-using awkward.ui.Data;
+using awkward.ui.Services;
 
 namespace awkward.ui.Pages.Entities
 {
     public class IndexModel : PageModel
     {
-        private readonly awkward.ui.Data.ApplicationDbContext _context;
+        private readonly IApiClient _Client;
 
-        public IndexModel(awkward.ui.Data.ApplicationDbContext context)
+        public IndexModel(IApiClient client)
         {
-            _context = context;
+            _Client = client;
         }
 
-        public IList<Entity> Entity { get;set; }
+        public IList<Entity> Entities { get;set; }
 
         public async Task OnGetAsync()
         {
-            Entity = await _context.Entity.ToListAsync();
+            Entities = await _Client.GetEntitiesAsync();
         }
     }
 }

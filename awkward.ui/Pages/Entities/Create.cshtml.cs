@@ -6,17 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using awkward.api.Models;
-using awkward.ui.Data;
+using awkward.ui.Services;
 
 namespace awkward.ui.Pages.Entities
 {
     public class CreateModel : PageModel
     {
-        private readonly awkward.ui.Data.ApplicationDbContext _context;
+        private readonly IApiClient _Client;
 
-        public CreateModel(awkward.ui.Data.ApplicationDbContext context)
+        public CreateModel(IApiClient client)
         {
-            _context = context;
+            _Client = client;
         }
 
         public IActionResult OnGet()
@@ -29,13 +29,9 @@ namespace awkward.ui.Pages.Entities
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            if (!ModelState.IsValid) return Page();
 
-            _context.Entity.Add(Entity);
-            await _context.SaveChangesAsync();
+            await _Client.AddEntityAsync(Entity);
 
             return RedirectToPage("./Index");
         }

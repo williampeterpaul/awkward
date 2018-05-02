@@ -28,19 +28,18 @@ namespace awkward.ui
         {
             var httpClient = new HttpClient
             {
-                BaseAddress = new Uri(Configuration["serviceUrl"])
+                BaseAddress = new Uri(Configuration["ServiceUrl"])
             };
 
             // API client configuration
-            services.AddSingleton(httpClient);
-            services.AddSingleton<IApiClient, ApiClient>();
-
-            services.AddMvc()
-                .AddRazorPagesOptions(options =>
+            services.AddScoped(x =>
+                new HttpClient
                 {
-                    options.Conventions.AuthorizeFolder("/Account/Manage");
-                    options.Conventions.AuthorizePage("/Account/Logout");
+                    BaseAddress = new Uri(Configuration["serviceUrl"])
                 });
+
+            services.AddScoped<IApiClient, ApiClient>();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

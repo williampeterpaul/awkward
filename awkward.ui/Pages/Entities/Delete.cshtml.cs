@@ -6,17 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using awkward.api.Models;
-using awkward.ui.Data;
+using awkward.ui.Services;
 
 namespace awkward.ui.Pages.Entities
 {
     public class DeleteModel : PageModel
     {
-        private readonly awkward.ui.Data.ApplicationDbContext _context;
+        private readonly IApiClient _Client;
 
-        public DeleteModel(awkward.ui.Data.ApplicationDbContext context)
+        public DeleteModel(IApiClient client)
         {
-            _context = context;
+            _Client = client;
         }
 
         [BindProperty]
@@ -24,34 +24,22 @@ namespace awkward.ui.Pages.Entities
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            Entity = await _context.Entity.SingleOrDefaultAsync(m => m.Id == id);
+            Entity = await _Client.GetEntityAsync(id.Value);
 
-            if (Entity == null)
-            {
-                return NotFound();
-            }
+            if (Entity == null) return NotFound();
+
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            Entity = await _context.Entity.FindAsync(id);
+            Entity = await _Client.GetEntityAsync(id.Value);
 
-            if (Entity != null)
-            {
-                _context.Entity.Remove(Entity);
-                await _context.SaveChangesAsync();
-            }
+            if (Entity != null) await _Client.RemoveTripAsync(id.Value);
 
             return RedirectToPage("./Index");
         }

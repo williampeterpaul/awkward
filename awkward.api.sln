@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "awkward.api", "awkward.api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awkward.ui", "awkward.ui\awkward.ui.csproj", "{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{B8F697AE-3746-4291-93C9-689FD5A0FA52}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B8F697AE-3746-4291-93C9-689FD5A0FA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8F697AE-3746-4291-93C9-689FD5A0FA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8F697AE-3746-4291-93C9-689FD5A0FA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8F697AE-3746-4291-93C9-689FD5A0FA52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
