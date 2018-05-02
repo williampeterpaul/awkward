@@ -5,16 +5,7 @@ using System.Threading.Tasks;
 
 namespace awkward.api.Models
 {
-    public class Entity
+    public class Entity : dto.Entity
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-
-        public string Content { get; set; }
-
-        public DateTime CreationDate { get; set; }
     }
 }

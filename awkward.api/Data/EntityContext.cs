@@ -12,7 +12,7 @@ namespace awkward.api.Data
     {
         public EntityContext()
         {
-            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public EntityContext(DbContextOptions<EntityContext> options) : base(options)

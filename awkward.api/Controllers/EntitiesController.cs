@@ -22,7 +22,8 @@ namespace awkward.api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            var entities = await Context.Entities.ToListAsync();
+            var entities = await Context.Entities.AsNoTracking().ToListAsync();
+
             return Ok(entities);
         }
 
@@ -30,6 +31,7 @@ namespace awkward.api.Controllers
         public async Task<IActionResult> GetAsync(int id)
         {
             var entity = await Context.Entities.FindAsync(id);
+
             return Ok(entity);
         }
 
