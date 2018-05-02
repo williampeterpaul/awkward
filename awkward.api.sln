@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "awkward.api", "awkward.api\awkward.api.csproj", "{50E10279-DD7A-4A68-947B-922499169D5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awkward.dto", "awkward.dto\awkward.dto.csproj", "{18A316A8-C8B0-4B49-B951-371E72F23044}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awkward.ui", "awkward.ui\awkward.ui.csproj", "{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{50E10279-DD7A-4A68-947B-922499169D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50E10279-DD7A-4A68-947B-922499169D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50E10279-DD7A-4A68-947B-922499169D5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18A316A8-C8B0-4B49-B951-371E72F23044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18A316A8-C8B0-4B49-B951-371E72F23044}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18A316A8-C8B0-4B49-B951-371E72F23044}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18A316A8-C8B0-4B49-B951-371E72F23044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
