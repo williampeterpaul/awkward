@@ -19,7 +19,7 @@
     "awkward.api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/entities",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
