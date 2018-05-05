@@ -12,26 +12,29 @@ namespace awkward.ui.Pages.Entities
 {
     public class CreateModel : PageModel
     {
-        private readonly IApiClient _Client;
-
         public CreateModel(IApiClient client)
         {
-            _Client = client;
+            Client = client;
         }
+
+        [BindProperty]
+        public Entity Entity { get; set; }
+
+        private IApiClient Client { get; }
 
         public IActionResult OnGet()
         {
             return Page();
         }
 
-        [BindProperty]
-        public Entity Entity { get; set; }
-
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid) return Page();
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-            await _Client.AddEntityAsync(Entity);
+            await Client.AddEntityAsync(Entity);
 
             return RedirectToPage("./Index");
         }

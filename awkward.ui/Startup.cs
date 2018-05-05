@@ -57,9 +57,6 @@ namespace awkward.ui
             }
 
             app.UseStaticFiles();
-
-            app.UseAuthentication();
-
             app.UseMvc();
         }
     }

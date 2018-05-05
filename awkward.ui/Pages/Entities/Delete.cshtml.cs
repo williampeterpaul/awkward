@@ -12,34 +12,46 @@ namespace awkward.ui.Pages.Entities
 {
     public class DeleteModel : PageModel
     {
-        private readonly IApiClient _Client;
-
         public DeleteModel(IApiClient client)
         {
-            _Client = client;
+            Client = client;
         }
 
         [BindProperty]
         public Entity Entity { get; set; }
 
+        private IApiClient Client { get; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            Entity = await _Client.GetEntityAsync(id.Value);
+            Entity = await Client.GetEntityAsync(id.Value);
 
-            if (Entity == null) return NotFound();
+            if (Entity == null)
+            {
+                return NotFound();
+            }
 
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            Entity = await _Client.GetEntityAsync(id.Value);
+            Entity = await Client.GetEntityAsync(id.Value);
 
-            if (Entity != null) await _Client.RemoveTripAsync(id.Value);
+            if (Entity != null)
+            {
+                await Client.RemoveEntityAsync(id.Value);
+            }
 
             return RedirectToPage("./Index");
         }

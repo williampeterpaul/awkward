@@ -10,23 +10,23 @@ namespace awkward.ui.Services
 {
     public class ApiClient : IApiClient
     {
-        private readonly HttpClient _HttpClient;
-
-        public ApiClient(HttpClient HttpClient)
+        public ApiClient(HttpClient httpClient)
         {
-            _HttpClient = HttpClient;
+            HttpClient = httpClient;
         }
+
+        private HttpClient HttpClient { get; }
 
         public async Task AddEntityAsync(Entity entity)
         {
-            var response = await _HttpClient.PostJsonAsync("/api/Entities", entity);
+            var response = await HttpClient.PostJsonAsync("/api/Entities", entity);
 
             response.EnsureSuccessStatusCode();
         }
 
         public async Task<List<Entity>> GetEntitiesAsync()
         {
-            var response = await _HttpClient.GetAsync("/api/Entities");
+            var response = await HttpClient.GetAsync("/api/Entities");
 
             response.EnsureSuccessStatusCode();
 
@@ -35,7 +35,7 @@ namespace awkward.ui.Services
 
         public async Task<Entity> GetEntityAsync(int id)
         {
-            var response = await _HttpClient.GetAsync($"/api/Entities/{id}");
+            var response = await HttpClient.GetAsync($"/api/Entities/{id}");
 
             response.EnsureSuccessStatusCode();
 
@@ -44,14 +44,14 @@ namespace awkward.ui.Services
 
         public async Task PutEntityAsync(Entity entity)
         {
-            var response = await _HttpClient.PutJsonAsync($"/api/Entities/{entity.Id}", entity);
+            var response = await HttpClient.PutJsonAsync($"/api/Entities/{entity.Id}", entity);
 
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task RemoveTripAsync(int id)
+        public async Task RemoveEntityAsync(int id)
         {
-            var response = await _HttpClient.DeleteAsync($"/api/Entities/{id}");
+            var response = await HttpClient.DeleteAsync($"/api/Entities/{id}");
 
             response.EnsureSuccessStatusCode();
         }

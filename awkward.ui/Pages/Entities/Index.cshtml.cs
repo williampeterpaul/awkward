@@ -12,18 +12,18 @@ namespace awkward.ui.Pages.Entities
 {
     public class IndexModel : PageModel
     {
-        private readonly IApiClient _Client;
-
         public IndexModel(IApiClient client)
         {
-            _Client = client;
+            Client = client;
         }
 
-        public IList<Entity> Entities { get;set; }
+        public IList<Entity> Entities { get; set; }
+
+        private IApiClient Client { get; }
 
         public async Task OnGetAsync()
         {
-            Entities = await _Client.GetEntitiesAsync();
+            Entities = await Client.GetEntitiesAsync();
         }
     }
 }

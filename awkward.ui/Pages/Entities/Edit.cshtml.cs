@@ -13,39 +13,48 @@ namespace awkward.ui.Pages.Entities
 {
     public class EditModel : PageModel
     {
-        private readonly IApiClient _Client;
-
         public EditModel(IApiClient client)
         {
-            _Client = client;
+            Client = client;
         }
 
         [BindProperty]
         public Entity Entity { get; set; }
 
+        private IApiClient Client { get; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            Entity = await _Client.GetEntityAsync(id.Value);
+            Entity = await Client.GetEntityAsync(id.Value);
 
-            if (Entity == null) return NotFound();
+            if (Entity == null)
+            {
+                return NotFound();
+            }
 
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid) return Page();
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-            await _Client.PutEntityAsync(Entity);
+            await Client.PutEntityAsync(Entity);
 
             return RedirectToPage("./Index");
         }
 
         private async Task<bool> EntityExists(int id)
         {
-            return await _Client.GetEntityAsync(id) != null;
+            return await Client.GetEntityAsync(id) != null;
         }
     }
 }

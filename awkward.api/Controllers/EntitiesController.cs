@@ -17,7 +17,7 @@ namespace awkward.api.Controllers
             Context = context;
         }
 
-        private EntityContext Context { get; set; }
+        private EntityContext Context { get; }
 
         [HttpGet]
         public async Task<IActionResult> GetAsync()
@@ -38,7 +38,10 @@ namespace awkward.api.Controllers
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody]Entity value)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             await Context.Entities.AddAsync(value);
             await Context.SaveChangesAsync();
@@ -50,10 +53,18 @@ namespace awkward.api.Controllers
         public async Task<IActionResult> PutAsync(int id, [FromBody]Entity value)
         {
             var entity = await Context.Entities.FindAsync(id);
-            if (entity == null) return NotFound();
-            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            Context.Entities.Update(value);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Context.Entities.Update(value); // Bug related to tracking
             await Context.SaveChangesAsync();
 
             return Ok();
@@ -63,7 +74,11 @@ namespace awkward.api.Controllers
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var entity = await Context.Entities.FindAsync(id);
-            if (entity == null) return NotFound();
+
+            if (entity == null)
+            {
+                return NotFound();
+            }
 
             Context.Entities.Remove(entity);
             await Context.SaveChangesAsync();

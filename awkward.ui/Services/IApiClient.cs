@@ -12,6 +12,6 @@ namespace awkward.ui.Services
         Task<Entity> GetEntityAsync(int id);
         Task PutEntityAsync(Entity entity);
         Task AddEntityAsync(Entity entity);
-        Task RemoveTripAsync(int id);
+        Task RemoveEntityAsync(int id);
     }
 }
