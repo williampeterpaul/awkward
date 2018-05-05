@@ -52,9 +52,8 @@ namespace awkward.api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody]Entity value)
         {
-            var entity = await Context.Entities.FindAsync(id);
 
-            if (entity == null)
+            if (!Context.Entities.Any(entity => entity.Id == id))
             {
                 return NotFound();
             }
