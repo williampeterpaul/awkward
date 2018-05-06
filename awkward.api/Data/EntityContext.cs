@@ -30,7 +30,10 @@ namespace awkward.api.Data
 
                 context.Database.EnsureCreated();
 
-                if (context.Entities.Any()) return;
+                if (context.Entities.Any())
+                {
+                    return;
+                }
 
                 context.Entities.AddRange(new Entity[] {
                     new Entity

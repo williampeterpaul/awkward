@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  api:
+    image: awkwardapi
+    build:
+      context: .
+      dockerfile: awkward.api/Dockerfile
+
+  ui:
+    image: awkwardui
+    environment:
+      - serviceUrl=http://api
+    build:
+      context: .
+      dockerfile: awkward.ui/Dockerfile
+    links:
+      - api
+
+  db:
+    image: "microsoft/mssql-server-linux"
