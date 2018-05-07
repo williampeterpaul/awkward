@@ -47,8 +47,6 @@ namespace awkward.ui.Pages.Entities
                 return Page();
             }
 
-            Entity.Modified = DateTime.Now;
-
             await Client.PutEntityAsync(Entity);
 
             return RedirectToPage("./Index");

@@ -32,9 +32,6 @@ namespace awkward.ui.Pages
             EntityA.Rating += exchange;
             EntityB.Rating -= exchange;
 
-            EntityA.Modified = DateTime.Now;
-            EntityB.Modified = DateTime.Now;
-
             await Client.PutEntityAsync(EntityA);
             await Client.PutEntityAsync(EntityB);
         }

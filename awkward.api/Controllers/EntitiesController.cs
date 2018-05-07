@@ -63,6 +63,8 @@ namespace awkward.api.Controllers
                 return BadRequest(ModelState);
             }
 
+            value.Modified = DateTime.Now;
+
             Context.Entities.Update(value); // Bug related to tracking
             await Context.SaveChangesAsync();
 
