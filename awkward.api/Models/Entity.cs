@@ -25,7 +25,7 @@ namespace awkward.api.Models
         public Medium Medium { get; set; }
 
         [Required]
-        public Merit Merit { get; set; }
+        public Grade Grade { get; set; }
 
         [Required]
         public int Rating { get; set; } = 1400;

@@ -23,7 +23,7 @@ namespace awkward.api.Models
             Knife = 3
         }
 
-        public enum Merit
+        public enum Grade
         {
             Best = 0,
             Worst = 1,
