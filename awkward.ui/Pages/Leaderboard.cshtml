@@ -6,6 +6,22 @@
 
 <h2>Leaderboard</h2>
 
+<form method="post">
+    <select onchange="this.form.submit()" asp-for="Grade" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Grade>()">
+        <option selected="selected" value="">Please select</option>
+    </select>
+
+    <select onchange="this.form.submit()" asp-for="Category" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Category>()">
+        <option selected="selected" value="">Please select</option>
+    </select>
+
+    <span>with a</span>
+
+    <select onchange="this.form.submit()" asp-for="Medium" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Medium>()">
+        <option selected="selected" value="">Please select</option>
+    </select>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -25,13 +41,13 @@
                 @Html.DisplayNameFor(model => model.Entities[0].Created)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Entities[0].Grade)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Entities[0].Category)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Entities[0].Medium)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Entities[0].Grade)
             </th>
             <th></th>
         </tr>
@@ -39,32 +55,32 @@
     <tbody>
         @foreach (var item in Model.Entities)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rating)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Created)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Medium)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grade)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medium)
+            </td>
+        </tr>
         }
     </tbody>
 </table>
