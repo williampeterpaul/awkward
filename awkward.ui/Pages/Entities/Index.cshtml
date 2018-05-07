@@ -2,7 +2,7 @@
 @model awkward.ui.Pages.Entities.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Entities";
 }
 
 <h2>Index</h2>
@@ -14,7 +14,7 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Entities[0].Name)
+                    @Html.DisplayNameFor(model => model.Entities[0].Title)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Entities[0].Description)
@@ -23,7 +23,7 @@
                     @Html.DisplayNameFor(model => model.Entities[0].Content)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Entities[0].CreationDate)
+                    @Html.DisplayNameFor(model => model.Entities[0].Created)
                 </th>
             <th></th>
         </tr>
@@ -32,7 +32,7 @@
 @foreach (var item in Model.Entities) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.Content)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
+                @Html.DisplayFor(modelItem => item.Created)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

@@ -1,10 +1,12 @@
-﻿using awkward.api.Models;
+﻿using awkward.api.Extensions;
+using awkward.api.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static awkward.api.Models.Enumerations;
 
 namespace awkward.api.Data
 {
@@ -35,32 +37,18 @@ namespace awkward.api.Data
                     return;
                 }
 
-                context.Entities.AddRange(new Entity[] {
-                    new Entity
+                for (int i = 1; i < 1000; i++)
+                {
+                    context.Entities.Add(new Entity
                     {
-                        Id = 1,
-                        Name = "Test A",
-                        Description = "Sentence describing test A",
+                        Id = i,
+                        Title = "Test " + i,
                         Content = "Content",
-                        CreationDate = DateTime.Now
-                    },
-                    new Entity
-                    {
-                        Id = 2,
-                        Name = "Test B",
-                        Description = "Sentence describing test B",
-                        Content = "Content",
-                        CreationDate = DateTime.Now
-                    },
-                    new Entity
-                    {
-                        Id = 3,
-                        Name = "Test C",
-                        Description = "Sentence describing test C",
-                        Content = "Content",
-                        CreationDate = DateTime.Now
-                    }
-                });
+                        Category = (Category) new Random().Next(0, 4).TryParseDefault<Category>(),
+                        Medium = (Medium) new Random().Next(0, 4).TryParseDefault<Medium>(),
+                        Merit = (Merit) new Random().Next(0, 2).TryParseDefault<Merit>(),
+                    });
+                }
 
                 context.SaveChanges();
             }
