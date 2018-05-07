@@ -36,6 +36,7 @@ namespace awkward.api.Models
         [Required]
         public DateTime Modified { get; set; } = DateTime.Now;
 
+        [Required]
         public string Description { get; set; } = "Default description";
     }
 }
