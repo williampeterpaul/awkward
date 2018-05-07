@@ -5,14 +5,21 @@ using System.Threading.Tasks;
 
 namespace awkward.api.Models
 {
-    public static class Enumerations
+    public class Enumerations
     {
+        public enum Grade
+        {
+            Best = 0,
+            Worst = 1,
+        }
+
         public enum Category
         {
             Clutch = 0,
             Spray = 1,
             Ninja = 2,
-            Comic = 3
+            Comic = 3,
+            OneTap = 4,
         }
 
         public enum Medium
@@ -20,13 +27,7 @@ namespace awkward.api.Models
             Sniper = 0,
             Rifle = 1,
             Pistol = 2,
-            Knife = 3
-        }
-
-        public enum Grade
-        {
-            Best = 0,
-            Worst = 1,
+            Knife = 3,
         }
     }
 }

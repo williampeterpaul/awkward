@@ -12,7 +12,7 @@ namespace awkward.unit
             var playerARating = 1000;
             var playerBRating = 1000;
 
-            var exchanged = EloRating.PointsExchanged(playerARating, playerBRating);
+            var exchanged = Elo.PointsExchanged(playerARating, playerBRating);
 
             playerARating += exchanged;
             playerBRating -= exchanged; 

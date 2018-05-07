@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace awkward.api.Models
 {
-    public static class EloRating
+    public static class Elo
     {
         private const int Factor = 50;
         private const int Volatility = 400;

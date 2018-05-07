@@ -19,13 +19,13 @@ namespace awkward.api.Models
         public string Content { get; set; }
 
         [Required]
+        public Grade Grade { get; set; }
+
+        [Required]
         public Category Category { get; set; }
 
         [Required]
         public Medium Medium { get; set; }
-
-        [Required]
-        public Grade Grade { get; set; }
 
         [Required]
         public int Rating { get; set; } = 1400;

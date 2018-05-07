@@ -37,16 +37,16 @@ namespace awkward.api.Data
                     return;
                 }
 
-                for (int i = 1; i < 1000; i++)
+                for (int i = 1; i < 100; i++)
                 {
                     context.Entities.Add(new Entity
                     {
                         Id = i,
                         Title = "Test " + i,
                         Content = "Content",
+                        Grade = (Grade)new Random().Next(0, 2).TryParseDefault<Grade>(),
                         Category = (Category) new Random().Next(0, 4).TryParseDefault<Category>(),
                         Medium = (Medium) new Random().Next(0, 4).TryParseDefault<Medium>(),
-                        Grade = (Grade) new Random().Next(0, 2).TryParseDefault<Grade>(),
                     });
                 }
 
