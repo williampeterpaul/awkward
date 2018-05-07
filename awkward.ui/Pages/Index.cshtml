@@ -4,9 +4,13 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="row">
-    <div class="col-md-1">
-        <h2>Welcome</h2>
-        <p>Short introduction</p>
-    </div>
-</div>
+<h2>Welcome</h2>
+
+@Html.DisplayFor(model => model.EntityA.Title)
+<span>vs</span>
+@Html.DisplayFor(model => model.EntityB.Title)
+
+<form method="post">
+    <input type="submit" asp-for="EntityA" />
+    <input type="submit" asp-for="EntityB" />
+</form>

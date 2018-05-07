@@ -4,6 +4,15 @@
     ViewData["Title"] = "About";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@Model.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">The Elo Rating System</h4>
+    <p>The Elo rating system is a method for calculating the relative skill levels of players in zero-sum games such as chess. It is named after its creator Arpad Elo, a Hungarian-American physics professor.</p>
+    <hr>
+    <p>@Model.Message</p>
+</div>
+
+<pre><code>Ea = 1/(1 + 10^(Rb-Ra)/400)</code></pre>
+<pre><code>Eb = 1/(1 + 10^(Ra-Rb)/400)</code></pre>
