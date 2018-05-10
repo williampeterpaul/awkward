@@ -19,7 +19,6 @@ namespace awkward.api.Models
             Spray = 1,
             Ninja = 2,
             Comic = 3,
-            OneTap = 4,
         }
 
         public enum Medium

@@ -16,26 +16,29 @@ namespace awkward.ui.Pages
             Client = client;
         }
 
-        [BindProperty]
         public Entity EntityA { get; set; }
 
-        [BindProperty]
         public Entity EntityB { get; set; }
 
         private IApiClient Client { get; }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            EntityA = await Client.GetEntityAsync(new Random().Next(3, 100));
-            EntityB = await Client.GetEntityAsync(new Random().Next(3, 100));
+            EntityA = await Client.GetEntityAsync(1);
+            EntityB = await Client.GetEntityAsync(2);
+
+            if (EntityA == null || EntityB == null)
+            {
+                return NotFound();
+            }
+
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            EntityA = await Client.GetEntityAsync(1);
+            EntityB = await Client.GetEntityAsync(2);
 
             var exchange = Elo.PointsExchanged(EntityA.Rating, EntityB.Rating);
 
@@ -45,7 +48,7 @@ namespace awkward.ui.Pages
             await Client.PutEntityAsync(EntityA);
             await Client.PutEntityAsync(EntityB);
 
-            return Page();
+            return RedirectToPage("./Index");
         }
     }
 }

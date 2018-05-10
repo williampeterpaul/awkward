@@ -1,5 +1,5 @@
 ﻿@page
-@model IndexModel
+@model awkward.ui.Pages.IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
@@ -7,10 +7,16 @@
 <h2>Welcome</h2>
 
 @Html.DisplayFor(model => model.EntityA.Title)
-<span>vs</span>
+@Html.DisplayFor(model => model.EntityA.Rating)
+
+<br />
+
 @Html.DisplayFor(model => model.EntityB.Title)
+@Html.DisplayFor(model => model.EntityB.Rating)
+
+<hr />
 
 <form method="post">
-    <input type="submit" asp-for="EntityA" />
-    <input type="submit" asp-for="EntityB" />
+    <input type="hidden" asp-for="EntityA.Id" />
+    <input type="submit" value="Save" class="btn btn-default" />
 </form>
