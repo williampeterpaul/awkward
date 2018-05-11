@@ -16,8 +16,10 @@ namespace awkward.ui.Pages
             Client = client;
         }
 
+        [BindProperty]
         public Entity EntityA { get; set; }
 
+        [BindProperty]
         public Entity EntityB { get; set; }
 
         private IApiClient Client { get; }
@@ -37,8 +39,10 @@ namespace awkward.ui.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            EntityA = await Client.GetEntityAsync(1);
-            EntityB = await Client.GetEntityAsync(2);
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
             var exchange = Elo.PointsExchanged(EntityA.Rating, EntityB.Rating);
 

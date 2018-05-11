@@ -18,5 +18,19 @@
 
 <form method="post">
     <input type="hidden" asp-for="EntityA.Id" />
-    <input type="submit" value="Save" class="btn btn-default" />
+    <input type="hidden" asp-for="EntityA.Title" />
+    <input type="hidden" asp-for="EntityA.Description" />
+    <input type="hidden" asp-for="EntityA.Content" />
+    <input type="hidden" asp-for="EntityA.Created" />
+    <input type="hidden" asp-for="EntityA.Rating" />
+
+    <input type="hidden" asp-for="EntityB.Id" />
+    <input type="hidden" asp-for="EntityB.Title" />
+    <input type="hidden" asp-for="EntityB.Description" />
+    <input type="hidden" asp-for="EntityB.Content" />
+    <input type="hidden" asp-for="EntityB.Created" />
+    <input type="hidden" asp-for="EntityB.Rating" />
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-default" />
+    </div>
 </form>
