@@ -44,10 +44,10 @@ namespace awkward.ui.Pages
                 return Page();
             }
 
-            var exchange = Elo.PointsExchanged(EntityA.Rating, EntityB.Rating);
+            var delta = Elo.PointsExchanged(EntityA.Rating, EntityB.Rating);
 
-            EntityA.Rating += exchange;
-            EntityB.Rating -= exchange;
+            EntityA.Rating += delta;
+            EntityB.Rating -= delta;
 
             await Client.PutEntityAsync(EntityA);
             await Client.PutEntityAsync(EntityB);

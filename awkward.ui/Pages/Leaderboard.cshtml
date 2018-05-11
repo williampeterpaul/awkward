@@ -8,17 +8,15 @@
 
 <form method="post">
     <select onchange="this.form.submit()" asp-for="Grade" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Grade>()">
-        <option selected="selected" value="">Please select</option>
+        <option selected="selected" value="">Any</option>
     </select>
 
     <select onchange="this.form.submit()" asp-for="Category" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Category>()">
-        <option selected="selected" value="">Please select</option>
+        <option selected="selected" value="">Any</option>
     </select>
 
-    <span>with a</span>
-
     <select onchange="this.form.submit()" asp-for="Medium" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Medium>()">
-        <option selected="selected" value="">Please select</option>
+        <option selected="selected" value="">Any</option>
     </select>
 </form>
 

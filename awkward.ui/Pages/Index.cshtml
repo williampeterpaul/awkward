@@ -6,13 +6,18 @@
 
 <h2>Welcome</h2>
 
-@Html.DisplayFor(model => model.EntityA.Title)
-@Html.DisplayFor(model => model.EntityA.Rating)
-
-<br />
-
-@Html.DisplayFor(model => model.EntityB.Title)
-@Html.DisplayFor(model => model.EntityB.Rating)
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>@Html.DisplayFor(model => model.EntityA.Title) - @Html.DisplayFor(model => model.EntityA.Rating)</h3>
+            <img style="width:100%;" src="@Html.DisplayFor(model => model.EntityA.Content)" />
+        </div>
+        <div class="col-sm-6">
+            <h3>@Html.DisplayFor(model => model.EntityB.Title) - @Html.DisplayFor(model => model.EntityB.Rating)</h3>
+            <img style="width:100%;" src="@Html.DisplayFor(model => model.EntityB.Content)" />
+        </div>
+    </div>
+</div>
 
 <hr />
 
@@ -30,7 +35,8 @@
     <input type="hidden" asp-for="EntityB.Content" />
     <input type="hidden" asp-for="EntityB.Created" />
     <input type="hidden" asp-for="EntityB.Rating" />
+
     <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-default" />
+        <input type="submit" value="Post" class="btn btn-default" />
     </div>
 </form>
