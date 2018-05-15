@@ -15,6 +15,7 @@ namespace awkward.ui.Pages
         {
             Client = client;
         }
+
         private IApiClient Client { get; }
     }
 }

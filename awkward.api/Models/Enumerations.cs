@@ -28,5 +28,12 @@ namespace awkward.api.Models
             Pistol = 2,
             Knife = 3,
         }
+
+        public enum ContentType
+        {
+            Gif = 0,
+            Image = 1,
+            Video = 2,
+        }
     }
 }
