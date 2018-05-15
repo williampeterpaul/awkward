@@ -5,38 +5,3 @@
 }
 
 <h2>Welcome</h2>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-            <h3>@Html.DisplayFor(model => model.EntityA.Title) - @Html.DisplayFor(model => model.EntityA.Rating)</h3>
-            <img style="width:100%;" src="@Html.DisplayFor(model => model.EntityA.Content)" />
-        </div>
-        <div class="col-sm-6">
-            <h3>@Html.DisplayFor(model => model.EntityB.Title) - @Html.DisplayFor(model => model.EntityB.Rating)</h3>
-            <img style="width:100%;" src="@Html.DisplayFor(model => model.EntityB.Content)" />
-        </div>
-    </div>
-</div>
-
-<hr />
-
-<form method="post">
-    <input type="hidden" asp-for="EntityA.Id" />
-    <input type="hidden" asp-for="EntityA.Title" />
-    <input type="hidden" asp-for="EntityA.Description" />
-    <input type="hidden" asp-for="EntityA.Content" />
-    <input type="hidden" asp-for="EntityA.Created" />
-    <input type="hidden" asp-for="EntityA.Rating" />
-
-    <input type="hidden" asp-for="EntityB.Id" />
-    <input type="hidden" asp-for="EntityB.Title" />
-    <input type="hidden" asp-for="EntityB.Description" />
-    <input type="hidden" asp-for="EntityB.Content" />
-    <input type="hidden" asp-for="EntityB.Created" />
-    <input type="hidden" asp-for="EntityB.Rating" />
-
-    <div class="form-group">
-        <input type="submit" value="Post" class="btn btn-default" />
-    </div>
-</form>

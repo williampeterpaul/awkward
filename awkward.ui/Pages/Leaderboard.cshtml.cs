@@ -42,7 +42,10 @@ namespace awkward.ui.Pages
         {
             Entities = await Client.GetEntitiesAsync();
 
-            Entities = Entities.OrderByDescending(e => e.Rating).Where(e => e.Category.Equals(Category) && e.Medium.Equals(Medium) && e.Grade.Equals(Grade)).ToList();
+            Entities = Entities.OrderByDescending(e => e.Rating).Where(e => 
+                e.Category.Equals(Category) && 
+                e.Medium.Equals(Medium) && 
+                e.Grade.Equals(Grade)).ToList();
         }
     }
 }
