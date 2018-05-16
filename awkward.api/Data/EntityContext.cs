@@ -44,7 +44,7 @@ namespace awkward.api.Data
                         Id = i,
                         Title = "Test " + i,
                         Content = "Content",
-                        Grade = (Grade)new Random().Next(0, 2).TryParseDefault<Grade>(),
+                        Grade = (Grade) new Random().Next(0, 2).TryParseDefault<Grade>(),
                         Category = (Category) new Random().Next(0, 4).TryParseDefault<Category>(),
                         Medium = (Medium) new Random().Next(0, 4).TryParseDefault<Medium>(),
                     });

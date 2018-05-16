@@ -12,19 +12,25 @@ namespace awkward.api.Models
         public int Id { get; set; }
 
         [Required]
+        public string Name { get; set; }
+
+        [Required]
         public string Alias { get; set; }
 
         [Required]
         public string Password { get; set; }
 
         [Required]
+        public string Bio { get; set; } = "Describe yourself.";
+
+        [Required]
+        public bool Administrator { get; set; } = false;
+
+        [Required]
         public DateTime Created { get; set; } = DateTime.Now;
 
         [Required]
         public DateTime Modified { get; set; } = DateTime.Now;
-
-        [Required]
-        public string Bio { get; set; } = "Describe yourself.";
 
         public List<Entity> Content { get; set; } = new List<Entity>();
 

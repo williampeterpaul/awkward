@@ -64,7 +64,7 @@ namespace awkward.api.Controllers
 
             value.Modified = DateTime.Now;
 
-            Context.Entities.Update(value); // Bug related to tracking
+            Context.Entities.Update(value);
             await Context.SaveChangesAsync();
 
             return Ok();
