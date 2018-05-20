@@ -32,10 +32,13 @@ namespace awkward.api.Models
         [Required]
         public DateTime Modified { get; set; } = DateTime.Now;
 
+        [Required]
         public List<Entity> Content { get; set; } = new List<Entity>();
 
+        [Required]
         public List<User> Followers { get; set; } = new List<User>();
 
+        [Required]
         public List<User> Following { get; set; } = new List<User>();
     }
 }
