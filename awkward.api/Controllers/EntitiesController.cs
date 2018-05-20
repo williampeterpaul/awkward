@@ -12,12 +12,12 @@ namespace awkward.api.Controllers
     [Route("api/[controller]")]
     public class EntitiesController : Controller
     {
-        public EntitiesController(EntityContext context)
+        public EntitiesController(Context context)
         {
             Context = context;
         }
 
-        private EntityContext Context { get; }
+        private Context Context { get; }
 
         [HttpGet]
         public async Task<IActionResult> GetAsync()

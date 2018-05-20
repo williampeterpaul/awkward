@@ -10,25 +10,27 @@ using static awkward.api.Models.Enumerations;
 
 namespace awkward.api.Data
 {
-    public class EntityContext : DbContext
+    public class Context : DbContext
     {
-        public EntityContext()
+        public Context()
         {
             //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public EntityContext(DbContextOptions<EntityContext> options) : base(options)
+        public Context(DbContextOptions<Context> options) : base(options)
         {
 
         }
 
         public DbSet<Entity> Entities { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         public static void Seed(IServiceProvider serviceProvider)
         {
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var context = scope.ServiceProvider.GetService<EntityContext>();
+                var context = scope.ServiceProvider.GetService<Context>();
 
                 context.Database.EnsureCreated();
 
@@ -39,18 +41,31 @@ namespace awkward.api.Data
 
                 for (int i = 1; i < 100; i++)
                 {
-                    context.Entities.Add(new Entity
+                    var entity = new Entity
                     {
                         Id = i,
                         Title = "Test " + i,
                         Content = "Content",
-                        Grade = (Grade) new Random().Next(0, 2).TryParseDefault<Grade>(),
-                        Category = (Category) new Random().Next(0, 4).TryParseDefault<Category>(),
-                        Medium = (Medium) new Random().Next(0, 4).TryParseDefault<Medium>(),
-                    });
-                }
+                        Grade = (Grade)new Random().Next(0, 2).TryParseDefault<Grade>(),
+                        Category = (Category)new Random().Next(0, 4).TryParseDefault<Category>(),
+                        Medium = (Medium)new Random().Next(0, 4).TryParseDefault<Medium>(),
+                    };
 
-                context.SaveChanges();
+                    var user = new User
+                    {
+                        Id = i,
+                        Name = "Test Name " + i,
+                        Alias = "Test Alias " + i,
+                        Password = "Password",
+                    };
+
+                    user.Content.Add(entity);
+
+                    context.Entities.Add(entity);
+                    context.Users.Add(user);
+
+                    context.SaveChanges();
+                }
             }
         }
     }
