@@ -28,7 +28,7 @@ namespace awkward.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<EntityContext>(x => x.UseSqlite("Data Source=YourDbFileName.sqlite"));
+            services.AddDbContext<Context>(x => x.UseSqlite("Data Source=YourDbFileName.sqlite"));
             services.AddSwaggerGen(x => x.SwaggerDoc("v1", new Info { Title = "Enitity Comparitor", Version = "v1" }));
         }
 
@@ -42,7 +42,7 @@ namespace awkward.api
 
                 app.UseDeveloperExceptionPage();
 
-                EntityContext.Seed(app.ApplicationServices);
+                Context.Seed(app.ApplicationServices);
             }
 
             app.UseMvc();

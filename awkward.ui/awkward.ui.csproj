@@ -17,4 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\awkward.api\awkward.api.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+  </ItemGroup>
 </Project>
