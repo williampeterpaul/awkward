@@ -5,11 +5,7 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "awkward.api", "awkward.api\awkward.api.csproj", "{50E10279-DD7A-4A68-947B-922499169D5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "awkward.ui", "awkward.ui\awkward.ui.csproj", "{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}"
-EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{35343096-470E-4540-A1E9-D60AB15AFEA5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awkward.unit", "awkward.unit\awkward.unit.csproj", "{C2276C3D-2B2A-4889-A9BA-87B01A662D13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awkward.ui", "awkward.ui\awkward.ui.csproj", "{5B6B6CB2-71D4-40C1-B0BB-2EB53133F93A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +17,10 @@ Global
 		{50E10279-DD7A-4A68-947B-922499169D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50E10279-DD7A-4A68-947B-922499169D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50E10279-DD7A-4A68-947B-922499169D5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFA9E76C-1FCB-4C8E-83BE-C4B11095146E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{35343096-470E-4540-A1E9-D60AB15AFEA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{35343096-470E-4540-A1E9-D60AB15AFEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{35343096-470E-4540-A1E9-D60AB15AFEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{35343096-470E-4540-A1E9-D60AB15AFEA5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2276C3D-2B2A-4889-A9BA-87B01A662D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2276C3D-2B2A-4889-A9BA-87B01A662D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2276C3D-2B2A-4889-A9BA-87B01A662D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2276C3D-2B2A-4889-A9BA-87B01A662D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6B6CB2-71D4-40C1-B0BB-2EB53133F93A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6B6CB2-71D4-40C1-B0BB-2EB53133F93A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6B6CB2-71D4-40C1-B0BB-2EB53133F93A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6B6CB2-71D4-40C1-B0BB-2EB53133F93A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

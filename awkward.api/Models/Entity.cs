@@ -28,6 +28,9 @@ namespace awkward.api.Models
         public Medium Medium { get; set; }
 
         [Required]
+        public string Description { get; set; } = "Default description.";
+
+        [Required]
         public int Rating { get; set; } = 1400;
 
         [Required]
@@ -35,8 +38,5 @@ namespace awkward.api.Models
 
         [Required]
         public DateTime Modified { get; set; } = DateTime.Now;
-
-        [Required]
-        public string Description { get; set; } = "Default description.";
     }
 }
