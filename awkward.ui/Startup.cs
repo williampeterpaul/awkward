@@ -35,6 +35,12 @@ namespace awkward.ui
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:client_id"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:client_secret"];
+            });
+
             // API client configuration
             services.AddScoped(x =>
                 new HttpClient
