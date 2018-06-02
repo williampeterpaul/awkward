@@ -13,12 +13,12 @@ namespace awkward.ui.Pages
 {
     public class LeaderboardModel : PageModel
     {
-        public LeaderboardModel(IApiClient client)
+        public LeaderboardModel(IApiClient<ApplicationContent> client)
         {
             Client = client;
         }
 
-        public IList<Media> Entities { get; set; }
+        public IList<ApplicationContent> Entities { get; set; }
 
         [BindProperty]
         public Grade Grade { get; set; }
@@ -29,7 +29,7 @@ namespace awkward.ui.Pages
         [BindProperty]
         public Medium Medium { get; set; }
 
-        private IApiClient Client { get; }
+        private IApiClient<ApplicationContent> Client { get; }
 
         public async Task OnGetAsync()
         {

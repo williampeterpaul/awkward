@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using awkward.ui.Data;
 using awkward.ui.Services;
 using System.Net.Http;
+using awkward.api.Models;
 
 namespace awkward.ui
 {
@@ -27,13 +27,6 @@ namespace awkward.ui
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
             // API client configuration
             services.AddScoped(x =>
                 new HttpClient
@@ -41,14 +34,10 @@ namespace awkward.ui
                     BaseAddress = new Uri(Configuration["ServiceUrl"])
                 });
 
-            services.AddScoped<IApiClient, ApiClient>();
+            services.AddScoped<IApiClient<ApplicationContent>, ContentApiClient>();
+            services.AddScoped<IApiClient<ApplicationUser>, AccountApiClient>();
 
-            services.AddMvc()
-                .AddRazorPagesOptions(options =>
-                {
-                    options.Conventions.AuthorizeFolder("/Account/Manage");
-                    options.Conventions.AuthorizePage("/Account/Logout");
-                });
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -33,7 +33,7 @@ namespace awkward.api.Models
         public DateTime Modified { get; set; } = DateTime.Now;
 
         [Required]
-        public List<Media> Content { get; set; } = new List<Media>();
+        public List<ApplicationContent> Content { get; set; } = new List<ApplicationContent>();
 
         [Required]
         public List<ApplicationUser> Followers { get; set; } = new List<ApplicationUser>();

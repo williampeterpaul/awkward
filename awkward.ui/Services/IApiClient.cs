@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace awkward.ui.Services
 {
-    public interface IApiClient
+    public interface IApiClient<T>
     {
-        Task<List<Media>> GetEntitiesAsync();
-        Task<Media> GetEntityAsync(int id);
-        Task PutEntityAsync(Media entity);
-        Task AddEntityAsync(Media entity);
+        Task<List<T>> GetEntitiesAsync();
+        Task<T> GetEntityAsync(int id);
+        Task PutEntityAsync(T entity);
+        Task AddEntityAsync(T entity);
         Task RemoveEntityAsync(int id);
     }
 }

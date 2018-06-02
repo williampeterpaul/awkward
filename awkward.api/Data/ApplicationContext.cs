@@ -22,7 +22,7 @@ namespace awkward.api.Data
 
         }
 
-        public DbSet<Media> Entities { get; set; }
+        public DbSet<ApplicationContent> Contents { get; set; }
 
         public DbSet<ApplicationUser> Users { get; set; }
 
@@ -34,14 +34,14 @@ namespace awkward.api.Data
 
                 context.Database.EnsureCreated();
 
-                if (context.Entities.Any())
+                if (context.Contents.Any())
                 {
                     return;
                 }
 
                 for (int i = 1; i < 100; i++)
                 {
-                    var entity = new Media
+                    var entity = new ApplicationContent
                     {
                         Id = i,
                         Title = "Test " + i,
@@ -61,7 +61,7 @@ namespace awkward.api.Data
 
                     user.Content.Add(entity);
 
-                    context.Entities.Add(entity);
+                    context.Contents.Add(entity);
                     context.Users.Add(user);
 
                     context.SaveChanges();

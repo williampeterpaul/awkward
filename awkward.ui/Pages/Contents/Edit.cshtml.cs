@@ -4,23 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using awkward.api.Models;
 using awkward.ui.Services;
 
-namespace awkward.ui.Pages.Content
+namespace awkward.ui.Pages.Contents
 {
-    public class DeleteModel : PageModel
+    public class EditModel : PageModel
     {
-        public DeleteModel(IApiClient client)
+        public EditModel(IApiClient<ApplicationContent> client)
         {
             Client = client;
         }
 
         [BindProperty]
-        public Media Media { get; set; }
+        public new ApplicationContent Content { get; set; }
 
-        private IApiClient Client { get; }
+        private IApiClient<ApplicationContent> Client { get; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +30,9 @@ namespace awkward.ui.Pages.Content
                 return NotFound();
             }
 
-            Media = await Client.GetEntityAsync(id.Value);
+            Content = await Client.GetEntityAsync(id.Value);
 
-            if (Media == null)
+            if (Content == null)
             {
                 return NotFound();
             }
@@ -39,21 +40,21 @@ namespace awkward.ui.Pages.Content
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (id == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return Page();
             }
 
-            Media = await Client.GetEntityAsync(id.Value);
-
-            if (Media != null)
-            {
-                await Client.RemoveEntityAsync(id.Value);
-            }
+            await Client.PutEntityAsync(Content);
 
             return RedirectToPage("./Index");
+        }
+
+        private async Task<bool> EntityExists(int id)
+        {
+            return await Client.GetEntityAsync(id) != null;
         }
     }
 }

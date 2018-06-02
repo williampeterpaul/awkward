@@ -7,7 +7,7 @@ using static awkward.api.Models.Enumerations;
 
 namespace awkward.api.Models
 {
-    public class Media
+    public class ApplicationContent
     {
         [Key]
         public int Id { get; set; }

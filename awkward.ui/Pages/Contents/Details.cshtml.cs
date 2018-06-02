@@ -8,18 +8,18 @@ using Microsoft.EntityFrameworkCore;
 using awkward.api.Models;
 using awkward.ui.Services;
 
-namespace awkward.ui.Pages.Content
+namespace awkward.ui.Pages.Contents
 {
     public class DetailsModel : PageModel
     {
-        public DetailsModel(IApiClient client)
+        public DetailsModel(IApiClient<ApplicationContent> client)
         {
             Client = client;
         }
 
-        public Media Media { get; set; }
+        public new ApplicationContent Content { get; set; }
 
-        private IApiClient Client { get; }
+        private IApiClient<ApplicationContent> Client { get; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,9 @@ namespace awkward.ui.Pages.Content
                 return NotFound();
             }
 
-            Media = await Client.GetEntityAsync(id.Value);
+            Content = await Client.GetEntityAsync(id.Value);
 
-            if (Media == null)
+            if (Content == null)
             {
                 return NotFound();
             }

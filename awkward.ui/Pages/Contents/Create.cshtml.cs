@@ -8,19 +8,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using awkward.api.Models;
 using awkward.ui.Services;
 
-namespace awkward.ui.Pages.Content
+namespace awkward.ui.Pages.Contents
 {
     public class CreateModel : PageModel
     {
-        public CreateModel(IApiClient client)
+        public CreateModel(IApiClient<ApplicationContent> client)
         {
             Client = client;
         }
 
         [BindProperty]
-        public Media Media { get; set; }
+        public new ApplicationContent Content { get; set; }
 
-        private IApiClient Client { get; }
+        private IApiClient<ApplicationContent> Client { get; }
 
         public IActionResult OnGet()
         {
@@ -34,7 +34,7 @@ namespace awkward.ui.Pages.Content
                 return Page();
             }
 
-            await Client.AddEntityAsync(Media);
+            await Client.AddEntityAsync(Content);
 
             return RedirectToPage("./Index");
         }

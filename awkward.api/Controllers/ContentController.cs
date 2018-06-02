@@ -22,37 +22,37 @@ namespace awkward.api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            var entities = await Context.Entities.AsNoTracking().ToListAsync();
+            var contents = await Context.Contents.AsNoTracking().ToListAsync();
 
-            return Ok(entities);
+            return Ok(contents);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            var entity = await Context.Entities.FindAsync(id);
+            var content = await Context.Contents.FindAsync(id);
 
-            return Ok(entity);
+            return Ok(content);
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody]Media value)
+        public async Task<IActionResult> PostAsync([FromBody]ApplicationContent value)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await Context.Entities.AddAsync(value);
+            await Context.Contents.AddAsync(value);
             await Context.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(int id, [FromBody]Media value)
+        public async Task<IActionResult> PutAsync(int id, [FromBody]ApplicationContent value)
         {
-            if (!Context.Entities.Any(entity => entity.Id == id))
+            if (!Context.Contents.Any(content => content.Id == id))
             {
                 return NotFound();
             }
@@ -64,7 +64,7 @@ namespace awkward.api.Controllers
 
             value.Modified = DateTime.Now;
 
-            Context.Entities.Update(value);
+            Context.Contents.Update(value);
             await Context.SaveChangesAsync();
 
             return Ok();
@@ -73,14 +73,14 @@ namespace awkward.api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var entity = await Context.Entities.FindAsync(id);
+            var content = await Context.Contents.FindAsync(id);
 
-            if (entity == null)
+            if (content == null)
             {
                 return NotFound();
             }
 
-            Context.Entities.Remove(entity);
+            Context.Contents.Remove(content);
             await Context.SaveChangesAsync();
 
             return NoContent();

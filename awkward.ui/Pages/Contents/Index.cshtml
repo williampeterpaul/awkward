@@ -1,5 +1,5 @@
 ﻿@page
-@model awkward.ui.Pages.Content.IndexModel
+@model awkward.ui.Pages.Contents.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,37 +14,37 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.MediaList[0].Title)
+                    @Html.DisplayNameFor(model => model.Contents[0].Title)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MediaList[0].Content)
+                    @Html.DisplayNameFor(model => model.Contents[0].Content)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MediaList[0].Grade)
+                    @Html.DisplayNameFor(model => model.Contents[0].Grade)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MediaList[0].Category)
+                    @Html.DisplayNameFor(model => model.Contents[0].Category)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MediaList[0].Medium)
+                    @Html.DisplayNameFor(model => model.Contents[0].Medium)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MediaList[0].Rating)
+                    @Html.DisplayNameFor(model => model.Contents[0].Rating)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MediaList[0].Created)
+                    @Html.DisplayNameFor(model => model.Contents[0].Created)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MediaList[0].Modified)
+                    @Html.DisplayNameFor(model => model.Contents[0].Modified)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MediaList[0].Description)
+                    @Html.DisplayNameFor(model => model.Contents[0].Description)
                 </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.MediaList) {
+@foreach (var item in Model.Contents) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)

@@ -1,0 +1,73 @@
+﻿@page
+@model awkward.ui.Pages.Contents.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Content</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Content.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content.Content)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content.Content)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content.Grade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content.Grade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content.Medium)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content.Medium)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content.Rating)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content.Created)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content.Created)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content.Modified)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content.Modified)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Content.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
