@@ -17,18 +17,15 @@ namespace awkward.ui.Pages.Account
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
-        private readonly IEmailSender _emailSender;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<LoginModel> logger,
-            IEmailSender emailSender)
+            ILogger<LoginModel> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _emailSender = emailSender;
         }
 
         [BindProperty]
@@ -72,11 +69,8 @@ namespace awkward.ui.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    await _emailSender.SendEmailConfirmationAsync(Input.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(Url.GetLocalUrl(returnUrl));
                 }
                 foreach (var error in result.Errors)
                 {

@@ -76,7 +76,6 @@ namespace awkward.ui.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
-                return LocalRedirect(Url.GetLocalUrl(returnUrl));
             }
             if (result.IsLockedOut)
             {
@@ -117,7 +116,6 @@ namespace awkward.ui.Pages.Account
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
-                        return LocalRedirect(Url.GetLocalUrl(returnUrl));
                     }
                 }
                 foreach (var error in result.Errors)
