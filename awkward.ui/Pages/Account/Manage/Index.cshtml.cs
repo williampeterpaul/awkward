@@ -16,21 +16,16 @@ namespace awkward.ui.Pages.Account.Manage
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IEmailSender _emailSender;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            IEmailSender emailSender)
+            SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _emailSender = emailSender;
         }
 
         public string Username { get; set; }
-
-        public bool IsEmailConfirmed { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -43,10 +38,6 @@ namespace awkward.ui.Pages.Account.Manage
             [Required]
             [EmailAddress]
             public string Email { get; set; }
-
-            [Phone]
-            [Display(Name = "Phone number")]
-            public string PhoneNumber { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -62,10 +53,7 @@ namespace awkward.ui.Pages.Account.Manage
             Input = new InputModel
             {
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber
             };
-
-            IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
 
             return Page();
         }
@@ -92,36 +80,7 @@ namespace awkward.ui.Pages.Account.Manage
                 }
             }
 
-            if (Input.PhoneNumber != user.PhoneNumber)
-            {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
-                {
-                    throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
-                }
-            }
-
             StatusMessage = "Your profile has been updated";
-            return RedirectToPage();
-        }
-        public async Task<IActionResult> OnPostSendVerificationEmailAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
-
-            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-            await _emailSender.SendEmailConfirmationAsync(user.Email, callbackUrl);
-
-            StatusMessage = "Verification email sent. Please check your email.";
             return RedirectToPage();
         }
     }
