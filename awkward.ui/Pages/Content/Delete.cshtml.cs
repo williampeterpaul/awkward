@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using awkward.api.Models;
 using awkward.ui.Services;
 
-namespace awkward.ui.Pages.Entities
+namespace awkward.ui.Pages.Content
 {
     public class DeleteModel : PageModel
     {
@@ -18,7 +18,7 @@ namespace awkward.ui.Pages.Entities
         }
 
         [BindProperty]
-        public Entity Entity { get; set; }
+        public Media Media { get; set; }
 
         private IApiClient Client { get; }
 
@@ -29,9 +29,9 @@ namespace awkward.ui.Pages.Entities
                 return NotFound();
             }
 
-            Entity = await Client.GetEntityAsync(id.Value);
+            Media = await Client.GetEntityAsync(id.Value);
 
-            if (Entity == null)
+            if (Media == null)
             {
                 return NotFound();
             }
@@ -46,9 +46,9 @@ namespace awkward.ui.Pages.Entities
                 return NotFound();
             }
 
-            Entity = await Client.GetEntityAsync(id.Value);
+            Media = await Client.GetEntityAsync(id.Value);
 
-            if (Entity != null)
+            if (Media != null)
             {
                 await Client.RemoveEntityAsync(id.Value);
             }

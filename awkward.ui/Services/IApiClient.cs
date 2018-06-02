@@ -8,10 +8,10 @@ namespace awkward.ui.Services
 {
     public interface IApiClient
     {
-        Task<List<Entity>> GetEntitiesAsync();
-        Task<Entity> GetEntityAsync(int id);
-        Task PutEntityAsync(Entity entity);
-        Task AddEntityAsync(Entity entity);
+        Task<List<Media>> GetEntitiesAsync();
+        Task<Media> GetEntityAsync(int id);
+        Task PutEntityAsync(Media entity);
+        Task AddEntityAsync(Media entity);
         Task RemoveEntityAsync(int id);
     }
 }

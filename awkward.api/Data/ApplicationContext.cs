@@ -10,27 +10,27 @@ using static awkward.api.Models.Enumerations;
 
 namespace awkward.api.Data
 {
-    public class Context : DbContext
+    public class ApplicationContext : DbContext
     {
-        public Context()
+        public ApplicationContext()
         {
             //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public Context(DbContextOptions<Context> options) : base(options)
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
 
         }
 
-        public DbSet<Entity> Entities { get; set; }
+        public DbSet<Media> Entities { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
 
         public static void Seed(IServiceProvider serviceProvider)
         {
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var context = scope.ServiceProvider.GetService<Context>();
+                var context = scope.ServiceProvider.GetService<ApplicationContext>();
 
                 context.Database.EnsureCreated();
 
@@ -41,7 +41,7 @@ namespace awkward.api.Data
 
                 for (int i = 1; i < 100; i++)
                 {
-                    var entity = new Entity
+                    var entity = new Media
                     {
                         Id = i,
                         Title = "Test " + i,
@@ -51,7 +51,7 @@ namespace awkward.api.Data
                         Medium = (Medium)new Random().Next(0, 4).TryParseDefault<Medium>(),
                     };
 
-                    var user = new User
+                    var user = new ApplicationUser
                     {
                         Id = i,
                         Name = "Test Name " + i,

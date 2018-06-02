@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace awkward.api.Models
 {
-    public class User
+    public class ApplicationUser
     {
         [Key]
         public int Id { get; set; }
@@ -33,12 +33,12 @@ namespace awkward.api.Models
         public DateTime Modified { get; set; } = DateTime.Now;
 
         [Required]
-        public List<Entity> Content { get; set; } = new List<Entity>();
+        public List<Media> Content { get; set; } = new List<Media>();
 
         [Required]
-        public List<User> Followers { get; set; } = new List<User>();
+        public List<ApplicationUser> Followers { get; set; } = new List<ApplicationUser>();
 
         [Required]
-        public List<User> Following { get; set; } = new List<User>();
+        public List<ApplicationUser> Following { get; set; } = new List<ApplicationUser>();
     }
 }

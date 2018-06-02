@@ -1,0 +1,76 @@
+﻿@page
+@model awkward.ui.Pages.Content.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Media</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Media.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Media.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Media.Content)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Media.Content)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Media.Grade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Media.Grade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Media.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Media.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Media.Medium)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Media.Medium)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Media.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Media.Rating)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Media.Created)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Media.Created)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Media.Modified)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Media.Modified)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Media.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Media.Description)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Media.Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

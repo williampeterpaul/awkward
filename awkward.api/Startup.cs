@@ -28,8 +28,8 @@ namespace awkward.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<Context>(x => x.UseSqlite("Data Source=YourDbFileName.sqlite"));
-            services.AddSwaggerGen(x => x.SwaggerDoc("v1", new Info { Title = "Enitity Comparitor", Version = "v1" }));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlite("Data Source=YourDbFileName.sqlite"));
+            services.AddSwaggerGen(options => options.SwaggerDoc("v1", new Info { Title = "Enitity Comparitor", Version = "v1" }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,11 +38,11 @@ namespace awkward.api
             if (env.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "Entity Comparitor"));
+                app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "Entity Comparitor"));
 
                 app.UseDeveloperExceptionPage();
 
-                Context.Seed(app.ApplicationServices);
+                ApplicationContext.Seed(app.ApplicationServices);
             }
 
             app.UseMvc();

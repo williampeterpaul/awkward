@@ -10,49 +10,49 @@ using Microsoft.EntityFrameworkCore;
 namespace awkward.api.Controllers
 {
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class MediaController : Controller
     {
-        public UsersController(Context context)
+        public MediaController(ApplicationContext context)
         {
             Context = context;
         }
 
-        private Context Context { get; }
+        private ApplicationContext Context { get; }
 
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            var users = await Context.Users.AsNoTracking().ToListAsync();
+            var entities = await Context.Entities.AsNoTracking().ToListAsync();
 
-            return Ok(users);
+            return Ok(entities);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            var user = await Context.Users.FindAsync(id);
+            var entity = await Context.Entities.FindAsync(id);
 
-            return Ok(user);
+            return Ok(entity);
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody]User value)
+        public async Task<IActionResult> PostAsync([FromBody]Media value)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await Context.Users.AddAsync(value);
+            await Context.Entities.AddAsync(value);
             await Context.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(int id, [FromBody]User value)
+        public async Task<IActionResult> PutAsync(int id, [FromBody]Media value)
         {
-            if (!Context.Users.Any(user => user.Id == id))
+            if (!Context.Entities.Any(entity => entity.Id == id))
             {
                 return NotFound();
             }
@@ -64,7 +64,7 @@ namespace awkward.api.Controllers
 
             value.Modified = DateTime.Now;
 
-            Context.Users.Update(value);
+            Context.Entities.Update(value);
             await Context.SaveChangesAsync();
 
             return Ok();
@@ -73,14 +73,14 @@ namespace awkward.api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var user = await Context.Users.FindAsync(id);
+            var entity = await Context.Entities.FindAsync(id);
 
-            if (user == null)
+            if (entity == null)
             {
                 return NotFound();
             }
 
-            Context.Users.Remove(user);
+            Context.Entities.Remove(entity);
             await Context.SaveChangesAsync();
 
             return NoContent();

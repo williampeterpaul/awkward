@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace awkward.api.Models
+namespace awkward.api.Models.Static
 {
-    public static class Elo
+    public static class EloRating
     {
         private const int Factor = 50;
         private const int Volatility = 400;

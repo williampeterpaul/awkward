@@ -17,32 +17,32 @@ namespace awkward.ui.Services
 
         private HttpClient HttpClient { get; }
 
-        public async Task AddEntityAsync(Entity entity)
+        public async Task AddEntityAsync(Media entity)
         {
             var response = await HttpClient.PostJsonAsync("/api/Entities", entity);
 
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task<List<Entity>> GetEntitiesAsync()
+        public async Task<List<Media>> GetEntitiesAsync()
         {
             var response = await HttpClient.GetAsync("/api/Entities");
 
             response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadAsJsonAsync<List<Entity>>();
+            return await response.Content.ReadAsJsonAsync<List<Media>>();
         }
 
-        public async Task<Entity> GetEntityAsync(int id)
+        public async Task<Media> GetEntityAsync(int id)
         {
             var response = await HttpClient.GetAsync($"/api/Entities/{id}");
 
             response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadAsJsonAsync<Entity>();
+            return await response.Content.ReadAsJsonAsync<Media>();
         }
 
-        public async Task PutEntityAsync(Entity entity)
+        public async Task PutEntityAsync(Media entity)
         {
             var response = await HttpClient.PutJsonAsync($"/api/Entities/{entity.Id}", entity);
 

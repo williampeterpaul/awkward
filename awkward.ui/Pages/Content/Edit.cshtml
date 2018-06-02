@@ -1,0 +1,75 @@
+﻿@page
+@model awkward.ui.Pages.Content.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Media</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Media.Id" />
+            <div class="form-group">
+                <label asp-for="Media.Title" class="control-label"></label>
+                <input asp-for="Media.Title" class="form-control" />
+                <span asp-validation-for="Media.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Media.Content" class="control-label"></label>
+                <input asp-for="Media.Content" class="form-control" />
+                <span asp-validation-for="Media.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Media.Grade" class="control-label"></label>
+                <select asp-for="Media.Grade" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Grade>()" class="form-control"></select>
+                <span asp-validation-for="Media.Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Media.Category" class="control-label"></label>
+                <select asp-for="Media.Category" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Category>()" class="form-control"></select>
+                <span asp-validation-for="Media.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Media.Medium" class="control-label"></label>
+                <select asp-for="Media.Medium" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Medium>()" class="form-control"></select>
+                <span asp-validation-for="Media.Medium" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Media.Rating" class="control-label"></label>
+                <input asp-for="Media.Rating" class="form-control" />
+                <span asp-validation-for="Media.Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Media.Created" class="control-label"></label>
+                <input asp-for="Media.Created" class="form-control" />
+                <span asp-validation-for="Media.Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Media.Modified" class="control-label"></label>
+                <input asp-for="Media.Modified" class="form-control" />
+                <span asp-validation-for="Media.Modified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Media.Description" class="control-label"></label>
+                <input asp-for="Media.Description" class="form-control" />
+                <span asp-validation-for="Media.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

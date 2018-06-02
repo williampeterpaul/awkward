@@ -18,7 +18,7 @@ namespace awkward.ui.Pages
             Client = client;
         }
 
-        public IList<Entity> Entities { get; set; }
+        public IList<Media> Entities { get; set; }
 
         [BindProperty]
         public Grade Grade { get; set; }
