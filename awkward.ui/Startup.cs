@@ -31,7 +31,7 @@ namespace awkward.ui
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<Data.ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -48,7 +48,7 @@ namespace awkward.ui
                     BaseAddress = new Uri(Configuration["ServiceUrl"])
                 });
 
-            services.AddScoped<IApiClient<api.Models.ApplicationUser>, AccountApiClient>();
+            services.AddScoped<IApiClient<ApplicationUser>, AccountApiClient>();
             services.AddScoped<IApiClient<ApplicationContent>, ContentApiClient>();
 
             services.AddMvc()

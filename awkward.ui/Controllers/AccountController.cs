@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using awkward.ui.Data;
+using awkward.api.Models;
 
 namespace awkward.ui.Controllers
 {

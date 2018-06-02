@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using awkward.ui.Data;
+using awkward.api.Models;using awkward.api.Models;
 
 namespace awkward.ui.Pages.Account.Manage
 {

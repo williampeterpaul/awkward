@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using awkward.ui.Data;
+using awkward.api.Models;using awkward.api.Models;
 using awkward.ui.Services;
 
 namespace awkward.ui.Pages.Account.Manage
