@@ -34,8 +34,8 @@ namespace awkward.ui
                     BaseAddress = new Uri(Configuration["ServiceUrl"])
                 });
 
-            services.AddScoped<IApiClient<ApplicationContent>, ContentApiClient>();
             services.AddScoped<IApiClient<ApplicationUser>, AccountApiClient>();
+            services.AddScoped<IApiClient<ApplicationContent>, ContentApiClient>();
 
             services.AddMvc();
         }
