@@ -50,7 +50,7 @@ namespace awkward.api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(int id, [FromBody]ApplicationUser value)
+        public async Task<IActionResult> PutAsync(string id, [FromBody]ApplicationUser value)
         {
             if (!Context.Users.Any(user => user.Id == id))
             {
@@ -61,8 +61,6 @@ namespace awkward.api.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            value.Modified = DateTime.Now;
 
             Context.Users.Update(value);
             await Context.SaveChangesAsync();

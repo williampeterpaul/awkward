@@ -51,18 +51,7 @@ namespace awkward.api.Data
                         Medium = (Medium)new Random().Next(0, 4).TryParseDefault<Medium>(),
                     };
 
-                    var user = new ApplicationUser
-                    {
-                        Id = i,
-                        Name = "Test Name " + i,
-                        Alias = "Test Alias " + i,
-                        Password = "Password",
-                    };
-
-                    user.Content.Add(entity);
-
                     context.Contents.Add(entity);
-                    context.Users.Add(user);
 
                     context.SaveChanges();
                 }
