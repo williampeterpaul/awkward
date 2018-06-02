@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using awkward.ui.Services;
 using System.Net.Http;
 using awkward.api.Models;
+using awkward.ui.Data;
 
 namespace awkward.ui
 {
@@ -27,6 +28,13 @@ namespace awkward.ui
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<Data.ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             // API client configuration
             services.AddScoped(x =>
                 new HttpClient
@@ -34,10 +42,19 @@ namespace awkward.ui
                     BaseAddress = new Uri(Configuration["ServiceUrl"])
                 });
 
-            services.AddScoped<IApiClient<ApplicationUser>, AccountApiClient>();
+            services.AddScoped<IApiClient<api.Models.ApplicationUser>, AccountApiClient>();
             services.AddScoped<IApiClient<ApplicationContent>, ContentApiClient>();
 
-            services.AddMvc();
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizeFolder("/Account/Manage");
+                    options.Conventions.AuthorizePage("/Account/Logout");
+                });
+
+            // Register no-op EmailSender used by account confirmation and password reset during development
+            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
+            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
