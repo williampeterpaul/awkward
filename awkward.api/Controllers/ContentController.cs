@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore;
 namespace awkward.api.Controllers
 {
     [Route("api/[controller]")]
-    public class MediaController : Controller
+    public class ContentController : Controller
     {
-        public MediaController(ApplicationContext context)
+        public ContentController(ApplicationContext context)
         {
             Context = context;
         }
