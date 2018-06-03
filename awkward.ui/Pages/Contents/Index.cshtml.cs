@@ -23,7 +23,7 @@ namespace awkward.ui.Pages.Contents
 
         public async Task OnGetAsync()
         {
-            Contents = await Client.GetEntitiesAsync();
+            Contents = await Client.GetAsync();
         }
     }
 }

@@ -17,14 +17,14 @@ namespace awkward.ui.Services
 
         private HttpClient HttpClient { get; }
 
-        public async Task AddEntityAsync(ApplicationUser entity)
+        public async Task AddAsync(ApplicationUser value)
         {
-            var response = await HttpClient.PostJsonAsync("/api/Account", entity);
+            var response = await HttpClient.PostJsonAsync("/api/Account", value);
 
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task<List<ApplicationUser>> GetEntitiesAsync()
+        public async Task<List<ApplicationUser>> GetAsync()
         {
             var response = await HttpClient.GetAsync("/api/Account");
 
@@ -33,7 +33,7 @@ namespace awkward.ui.Services
             return await response.Content.ReadAsJsonAsync<List<ApplicationUser>>();
         }
 
-        public async Task<ApplicationUser> GetEntityAsync(int id)
+        public async Task<ApplicationUser> GetAsync(int id)
         {
             var response = await HttpClient.GetAsync($"/api/Account/{id}");
 
@@ -42,14 +42,14 @@ namespace awkward.ui.Services
             return await response.Content.ReadAsJsonAsync<ApplicationUser>();
         }
 
-        public async Task PutEntityAsync(ApplicationUser entity)
+        public async Task PutAsync(ApplicationUser value)
         {
-            var response = await HttpClient.PutJsonAsync($"/api/Account/{entity.Id}", entity);
+            var response = await HttpClient.PutJsonAsync($"/api/Account/{value.Id}", value);
 
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task RemoveEntityAsync(int id)
+        public async Task RemoveAsync(int id)
         {
             var response = await HttpClient.DeleteAsync($"/api/Account/{id}");
 

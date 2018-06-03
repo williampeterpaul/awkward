@@ -34,7 +34,7 @@ namespace awkward.ui.Pages.Contents
                 return Page();
             }
 
-            await Client.AddEntityAsync(Content);
+            await Client.AddAsync(Content);
 
             return RedirectToPage("./Index");
         }

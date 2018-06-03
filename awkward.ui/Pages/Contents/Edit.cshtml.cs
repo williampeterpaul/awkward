@@ -30,7 +30,7 @@ namespace awkward.ui.Pages.Contents
                 return NotFound();
             }
 
-            Content = await Client.GetEntityAsync(id.Value);
+            Content = await Client.GetAsync(id.Value);
 
             if (Content == null)
             {
@@ -47,14 +47,14 @@ namespace awkward.ui.Pages.Contents
                 return Page();
             }
 
-            await Client.PutEntityAsync(Content);
+            await Client.PutAsync(Content);
 
             return RedirectToPage("./Index");
         }
 
         private async Task<bool> EntityExists(int id)
         {
-            return await Client.GetEntityAsync(id) != null;
+            return await Client.GetAsync(id) != null;
         }
     }
 }

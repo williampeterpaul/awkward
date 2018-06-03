@@ -28,7 +28,7 @@ namespace awkward.ui.Pages.Contents
                 return NotFound();
             }
 
-            Content = await Client.GetEntityAsync(id.Value);
+            Content = await Client.GetAsync(id.Value);
 
             if (Content == null)
             {

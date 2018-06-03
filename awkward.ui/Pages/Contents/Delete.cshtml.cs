@@ -29,7 +29,7 @@ namespace awkward.ui.Pages.Contents
                 return NotFound();
             }
 
-            Content = await Client.GetEntityAsync(id.Value);
+            Content = await Client.GetAsync(id.Value);
 
             if (Content == null)
             {
@@ -46,11 +46,11 @@ namespace awkward.ui.Pages.Contents
                 return NotFound();
             }
 
-            Content = await Client.GetEntityAsync(id.Value);
+            Content = await Client.GetAsync(id.Value);
 
             if (Content != null)
             {
-                await Client.RemoveEntityAsync(id.Value);
+                await Client.RemoveAsync(id.Value);
             }
 
             return RedirectToPage("./Index");

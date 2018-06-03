@@ -33,14 +33,14 @@ namespace awkward.ui.Pages
 
         public async Task OnGetAsync()
         {
-            Entities = await Client.GetEntitiesAsync();
+            Entities = await Client.GetAsync();
 
             Entities = Entities.OrderByDescending(e => e.Rating).Take(20).ToList();
         }
 
         public async Task OnPostAsync()
         {
-            Entities = await Client.GetEntitiesAsync();
+            Entities = await Client.GetAsync();
 
             Entities = Entities.OrderByDescending(e => e.Rating).Where(e => 
                 e.Category.Equals(Category) && 
