@@ -7,15 +7,15 @@
 <h2>Leaderboard</h2>
 
 <form method="post">
-    <select onchange="this.form.submit()" asp-for="Grade" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Grade>()">
+    <select onchange="this.form.submit()" asp-for="Grade" asp-items="Html.GetEnumSelectList<awkward.api.Models.Static.Enumerations.Grade>()">
         <option selected="selected" value="">Any</option>
     </select>
 
-    <select onchange="this.form.submit()" asp-for="Category" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Category>()">
+    <select onchange="this.form.submit()" asp-for="Category" asp-items="Html.GetEnumSelectList<awkward.api.Models.Static.Enumerations.Category>()">
         <option selected="selected" value="">Any</option>
     </select>
 
-    <select onchange="this.form.submit()" asp-for="Medium" asp-items="Html.GetEnumSelectList<awkward.api.Models.Enumerations.Medium>()">
+    <select onchange="this.form.submit()" asp-for="Medium" asp-items="Html.GetEnumSelectList<awkward.api.Models.Static.Enumerations.Medium>()">
         <option selected="selected" value="">Any</option>
     </select>
 </form>

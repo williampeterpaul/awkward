@@ -51,10 +51,5 @@ namespace awkward.ui.Pages.Contents
 
             return RedirectToPage("./Index");
         }
-
-        private async Task<bool> EntityExists(int id)
-        {
-            return await Client.GetAsync(id) != null;
-        }
     }
 }
