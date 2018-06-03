@@ -1,18 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using awkward.api.Models;
+using awkward.ui.Data;
+using awkward.ui.Services;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using awkward.ui.Services;
+using System;
 using System.Net.Http;
-using awkward.api.Models;
-using awkward.ui.Data;
 
 namespace awkward.ui
 {

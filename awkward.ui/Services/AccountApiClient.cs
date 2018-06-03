@@ -1,10 +1,8 @@
-﻿using System;
+﻿using awkward.api.Models;
+using awkward.ui.Extensions;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using awkward.api.Models;
-using awkward.ui.Extensions;
 
 namespace awkward.ui.Services
 {

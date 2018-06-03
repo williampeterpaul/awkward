@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace awkward.api.Models.Static
+﻿namespace awkward.api.Models.Static
 {
     public static class Enumerations
     {
