@@ -7,7 +7,7 @@ using awkward.api.Models;
 using awkward.ui.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using static awkward.api.Models.Enumerations;
+using static awkward.api.Models.Static.Enumerations;
 
 namespace awkward.ui.Pages
 {

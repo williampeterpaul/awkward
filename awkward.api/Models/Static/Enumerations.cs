@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace awkward.api.Models
+namespace awkward.api.Models.Static
 {
-    public class Enumerations
+    public static class Enumerations
     {
         public enum Grade
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using static awkward.api.Models.Enumerations;
+using static awkward.api.Models.Static.Enumerations;
 
 namespace awkward.api.Models
 {
