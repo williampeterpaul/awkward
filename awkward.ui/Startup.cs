@@ -25,17 +25,11 @@ namespace awkward.ui
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite("Data Source=YourDbFileName.sqlite"));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddAuthentication().AddGoogle(googleOptions =>
-            {
-                googleOptions.ClientId = Configuration["Authentication:Google:client_id"];
-                googleOptions.ClientSecret = Configuration["Authentication:Google:client_secret"];
-            });
 
             // API client configuration
             services.AddScoped(x =>

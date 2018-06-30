@@ -25,8 +25,6 @@ namespace awkward.ui.Pages.Account
         [BindProperty]
         public InputModel Input { get; set; }
 
-        public IList<AuthenticationScheme> ExternalLogins { get; set; }
-
         public string ReturnUrl { get; set; }
 
         [TempData]
@@ -56,8 +54,6 @@ namespace awkward.ui.Pages.Account
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
             ReturnUrl = returnUrl;
         }
 
@@ -74,10 +70,6 @@ namespace awkward.ui.Pages.Account
                 {
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(Url.GetLocalUrl(returnUrl));
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {

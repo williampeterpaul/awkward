@@ -23,6 +23,7 @@ namespace awkward.ui.Extensions
         {
             return SendJsonAsync<T>(client, HttpMethod.Post, url, value);
         }
+
         public static Task<HttpResponseMessage> PutJsonAsync<T>(this HttpClient client, string url, T value)
         {
             return SendJsonAsync<T>(client, HttpMethod.Put, url, value);
