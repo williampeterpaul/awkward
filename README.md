@@ -2,7 +2,7 @@
 
 The following repository is an abstract API example developed using ASP.NET Core, Entity Framework Core, and Swagger. This project servers as nothing more than a boilerplate for a RESTful web-based system with API and UI abstraction. 
 
-It has been a great way for me to explore some exciting new techologies such as [Razor Pages](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-2.1&tabs=visual-studio), and [EF Core](https://docs.microsoft.com/en-us/ef/core/), and [Swagger](https://swagger.io/).
+It has been a great way for me to explore some exciting new techologies such as [Razor Pages](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-2.1&tabs=visual-studio), [EF Core](https://docs.microsoft.com/en-us/ef/core/), and [Swagger](https://swagger.io/).
 
 
 ## Contribute
